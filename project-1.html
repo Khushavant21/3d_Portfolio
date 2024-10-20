@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mansoon Video</title>
+    <title>Monsoon Video</title>
     <style>
         body {
             margin: 0;
@@ -11,21 +11,66 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #000;
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
         }
+
         .video-container {
             position: relative;
-            width: 80%;
-            height: 80vh;
+            width: 90%;
+            max-width: 900px;
+            height: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            overflow: hidden;
         }
+
         .dsn-video {
             width: 100%;
             height: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
+        /* Overlay effect */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+            pointer-events: none;
+        }
+
+        /* Center the video and make it responsive */
+        .video-container::after {
+            content: "";
+            display: block;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        .dsn-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .video-container {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="video-container">
+        <div class="video-overlay"></div>
         <video class="dsn-video" controls>
             <source src="assets/img/summer.mp4" type="video/mp4">
             <source src="assets/img/summer.webm" type="video/webm">
